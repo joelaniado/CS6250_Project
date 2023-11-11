@@ -17,7 +17,7 @@ def main():
     PATH_TEST_FILE = "./data/test_data/"
 
     # Model Variables
-    EPOCHS = 3
+    EPOCHS = 10
     BATCH_SIZE = 32
     CUDA = False  # Set 'True' if you want to use GPU
     WORKERS = 0
@@ -51,7 +51,7 @@ def main():
 
     model = TCoN(num_features)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters())
+    optimizer = optim.Adam(model.parameters(),lr=0.001,betas=(0.9,0.999))
 
     best_val_acc = 0.0
     train_losses, train_accuracies,  = [], [],
@@ -78,6 +78,8 @@ def main():
 
     roc = comp_roc(test_prob,test_labels)
     pr = comp_pr(test_prob,test_labels)
+
+    print(roc, pr)
 
 
 

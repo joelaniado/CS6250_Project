@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e3f44b6-1451-4c72-8cde-98e60340d4c0" name="Changes" comment="" />
+    <list default="true" id="2e3f44b6-1451-4c72-8cde-98e60340d4c0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/1/TCoN.pth" beforeDir="false" afterPath="$PROJECT_DIR$/output/1/TCoN.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/plots/accCurves.png" beforeDir="false" afterPath="$PROJECT_DIR$/output/plots/accCurves.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/plots/lossCurves.png" beforeDir="false" afterPath="$PROJECT_DIR$/output/plots/lossCurves.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_model.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +24,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

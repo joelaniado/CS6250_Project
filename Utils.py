@@ -4,7 +4,8 @@ import numpy as np
 import torch
 import torch.nn as nn
 from sklearn.metrics import roc_auc_score, precision_recall_curve, auc, roc_curve
-from scipy.special import softmax
+import itertools
+
 
 
 class Metrics(object):
@@ -34,13 +35,13 @@ def comp_acc(output, target):
 
 def comp_roc(output,target):
     with torch.no_grad():
-        prob = output[:,1]
+        prob = output
         auc = roc_auc_score(target, prob)
         return auc
 
 def comp_pr(output,target):
     with torch.no_grad():
-        prob = output[:,1]
+        prob = output
         precision, recall, thresholds = precision_recall_curve(target, prob)
         return auc(recall,precision)
 
@@ -144,11 +145,10 @@ def predict_task(model, device, data_loader):
                 input = input.to(device)
             # get the inputs
             outputs = model(input)
-            soft = nn.Softmax(dim=0)
-            prob = soft(outputs[0])
-            probas.append(prob[1].item())
-            targets.append(target)
-    # probas = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
-    return probas, targets
+            soft = nn.Softmax(dim=1)
+            prob = soft(outputs)
+            probas.append(prob[:,1].tolist())
+            targets.append(target.tolist())
+    return list(itertools.chain.from_iterable(probas)), list(itertools.chain.from_iterable(targets))
 
 
