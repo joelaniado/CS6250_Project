@@ -32,4 +32,4 @@ def plot_confusion_matrix(results, class_names):
     plt.rcParams["figure.figsize"] = (14, 10)
     disp.plot()
     plt.title('Normalized Confusion Matrix')
-    plt.savefig("./output/plots/confMat.png")
+    plt.savefig(" ./output/plots/confMat.png")

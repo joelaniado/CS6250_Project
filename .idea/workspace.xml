@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/output/1/TCoN.pth" beforeDir="false" afterPath="$PROJECT_DIR$/output/1/TCoN.pth" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/plots/accCurves.png" beforeDir="false" afterPath="$PROJECT_DIR$/output/plots/accCurves.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/plots/lossCurves.png" beforeDir="false" afterPath="$PROJECT_DIR$/output/plots/lossCurves.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/plots.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,6 +89,11 @@
           <url>file://$PROJECT_DIR$/train_model.py</url>
           <line>76</line>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/train_model.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

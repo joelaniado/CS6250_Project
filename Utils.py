@@ -43,7 +43,7 @@ def comp_pr(output,target):
     with torch.no_grad():
         prob = output
         precision, recall, thresholds = precision_recall_curve(target, prob)
-        return auc(recall,precision)
+        return auc(recall, precision)
 
 def train(model, device, data_loader, criterion, optimizer, epoch, print_freq=10):
     batch_time = Metrics()
@@ -145,10 +145,10 @@ def predict_task(model, device, data_loader):
                 input = input.to(device)
             # get the inputs
             outputs = model(input)
-            soft = nn.Softmax(dim=1)
-            prob = soft(outputs)
-            probas.append(prob[:,1].tolist())
-            targets.append(target.tolist())
-    return list(itertools.chain.from_iterable(probas)), list(itertools.chain.from_iterable(targets))
+            soft = nn.Softmax(dim=0)
+            prob = soft(outputs[0])
+            probas.append(prob[1].item())
+            targets.append(target.item())
+    return probas, targets
 
 
