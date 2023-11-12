@@ -14,6 +14,7 @@ class TCoN(nn.Module):
     def forward(self, input_tuple):
         seqs, lengths = input_tuple
         x = self.relu(self.emb(seqs))
+
         x, weights = self.attention(x, x, x)
         x = pack_padded_sequence(x, lengths=lengths, batch_first=True, enforce_sorted=False)
         x, _ = self.gru(x)

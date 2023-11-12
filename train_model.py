@@ -17,7 +17,7 @@ def main():
     PATH_TEST_FILE = "./data/test_data/"
 
     # Model Variables
-    EPOCHS = 20
+    EPOCHS = 15
     BATCH_SIZE = 32
     CUDA = False  # Set 'True' if you want to use GPU
     WORKERS = 0
@@ -44,9 +44,9 @@ def main():
 
     train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=dl_collate_fn,
                               num_workers=WORKERS)
-    valid_loader = DataLoader(dataset=valid_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=dl_collate_fn,
+    valid_loader = DataLoader(dataset=valid_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=dl_collate_fn,
                               num_workers=WORKERS)
-    test_loader = DataLoader(dataset=test_dataset, batch_size=1, shuffle=True, collate_fn=dl_collate_fn,
+    test_loader = DataLoader(dataset=test_dataset, batch_size=1, shuffle=False, collate_fn=dl_collate_fn,
                              num_workers=WORKERS)
 
     model = TCoN(num_features)
