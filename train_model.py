@@ -1,5 +1,6 @@
 import os
 import torch
+torch.manual_seed(42)
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import torch.optim as optim
@@ -17,7 +18,7 @@ def main():
     PATH_TEST_FILE = "./data/test_data/"
 
     # Model Variables
-    EPOCHS = 15
+    EPOCHS = 10
     BATCH_SIZE = 32
     CUDA = False  # Set 'True' if you want to use GPU
     WORKERS = 0
@@ -36,7 +37,7 @@ def main():
     valid_ids, valid_labels, valid_seqs = load_data(path=PATH_VALID_FILE, task=TASK, mode='validation')
     test_ids, test_labels, test_seqs = load_data(path=PATH_TEST_FILE, task=TASK, mode='test')
 
-    num_features = calculate_num_features(train_seqs)
+    num_features = max([calculate_num_features(train_seqs), calculate_num_features(valid_seqs),calculate_num_features(test_seqs)])
 
     train_dataset = VisitSeqLabelDataset(train_seqs, train_labels, num_features)
     valid_dataset = VisitSeqLabelDataset(valid_seqs, valid_labels, num_features)

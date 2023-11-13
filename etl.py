@@ -9,7 +9,7 @@ from torch.utils.data import TensorDataset, Dataset
 
 def load_data(path, task, mode):
     task_dict = {1: "mortality/mortality.", 2: "readmission/readmission.", 3: "heart_failure/heart_failure.",
-                 4: "sepsis/"}
+                 4: "sepsis/sepsis."}
     file_ids = open(path + task_dict[task] + 'ids.' + mode, 'rb')
     file_labels = open(path + task_dict[task] + 'labels.' + mode, 'rb')
     file_seqs = open(path + task_dict[task] + 'seqs.' + mode, 'rb')
@@ -22,12 +22,6 @@ def load_data(path, task, mode):
 
 
 def calculate_num_features(seqs):
-    """
-    :param seqs:
-    :return: the calculated number of features
-    """
-    # TODO: Calculate the number of features (diagnoses codes in the train set)
-
     nfeat = int(max(list(itertools.chain.from_iterable(list(itertools.chain.from_iterable(seqs))))) + 1)
     return nfeat
 
