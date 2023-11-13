@@ -26,7 +26,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() and CUDA else "cpu")
 
     # Specify task 1.Mortality 2.Readmission 3.Heart Failure 4.Sepsis
-    TASK = 1
+    TASK = 2
 
     # Path for saving model
     PATH_OUTPUT = "./output/" + str(TASK) + '/'
