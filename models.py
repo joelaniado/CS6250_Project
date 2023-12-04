@@ -9,7 +9,7 @@ class TCoN(nn.Module):
         self.emb = nn.Linear(in_features=num_f, out_features=200)
         self.relu = nn.ReLU()
         self.linear = nn.Linear(200,100)
-        self.attention = nn.MultiheadAttention(100, 2, batch_first=True)
+        self.attention = nn.MultiheadAttention(100, 2, batch_first=True, dropout=0.15)
         self.gru = nn.GRU(input_size=100,hidden_size=2,num_layers=1,batch_first=True)
 
     def forward(self, input_tuple):

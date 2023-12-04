@@ -32,4 +32,12 @@ def plot_confusion_matrix(results, class_names):
     plt.rcParams["figure.figsize"] = (14, 10)
     disp.plot()
     plt.title('Normalized Confusion Matrix')
-    plt.savefig(" ./output/plots/confMat.png")
+    plt.savefig("./output/plots/confMat.png")
+
+def plot_dist(labels,task):
+    bin = np.arange(3)
+    labels = sum(labels, [])
+    plt.hist(labels, bins=bin,edgecolor='black')
+    plt.xticks(bin - .5, bin)
+    plt.title("Response Label Distribution")
+    plt.savefig("./output/plots/dist" + str(task) + ".png")

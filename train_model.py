@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 import torch.optim as optim
 
 from models import TCoN
-from plots import plot_curves
+from plots import plot_curves, plot_dist
 from etl import load_data, calculate_num_features, VisitSeqLabelDataset, dl_collate_fn
 from Utils import train, evaluate, predict_task, comp_roc, comp_pr
 
@@ -23,10 +23,11 @@ def main():
     CUDA = False  # Set 'True' if you want to use GPU
     WORKERS = 0
 
+    # Determine device
     device = torch.device("cuda" if torch.cuda.is_available() and CUDA else "cpu")
 
     # Specify task 1.Mortality 2.Readmission 3.Heart Failure 4.Sepsis
-    TASK = 2
+    TASK = 4
 
     # Path for saving model
     PATH_OUTPUT = "./output/" + str(TASK) + '/'
@@ -37,8 +38,13 @@ def main():
     valid_ids, valid_labels, valid_seqs = load_data(path=PATH_VALID_FILE, task=TASK, mode='validation')
     test_ids, test_labels, test_seqs = load_data(path=PATH_TEST_FILE, task=TASK, mode='test')
 
+    # Plot and save label distribution
+    #plot_dist([train_labels, valid_labels, test_labels], TASK)
+
+    # Calculate number of features
     num_features = max([calculate_num_features(train_seqs), calculate_num_features(valid_seqs),calculate_num_features(test_seqs)])
 
+    # Process datasets
     train_dataset = VisitSeqLabelDataset(train_seqs, train_labels, num_features)
     valid_dataset = VisitSeqLabelDataset(valid_seqs, valid_labels, num_features)
     test_dataset = VisitSeqLabelDataset(test_seqs, test_labels, num_features)
@@ -52,7 +58,7 @@ def main():
 
     model = TCoN(num_features)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(),lr=0.001,betas=(0.9,0.999))
+    optimizer = optim.Adam(model.parameters(), lr=0.0005,betas=(0.9,0.999))
 
     best_val_acc = 0.0
     train_losses, train_accuracies,  = [], [],
